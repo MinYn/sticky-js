@@ -236,7 +236,11 @@ class Sticky {
    */
    setPosition(element) {
     this.css(element, { position: '', width: '', top: '', left: '' });
-
+     
+    if((document.documentElement.scrollHeight - document.documentElement.clientHeight) < (element.sticky.rect.top + element.sticky.rect.height)){
+      return;
+    }
+     
     if ((this.vp.height < element.sticky.rect.height) || !element.sticky.active) {
       return;
     }
